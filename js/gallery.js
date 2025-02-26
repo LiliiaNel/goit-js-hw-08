@@ -83,23 +83,20 @@ function createGalleryMarkup(images) {
     .join("");
 }
 
-const instance = basicLightbox.create(
-  `<div class="modal">
-  Content when created() is called.
-    </div>
-`)
+
 
 galleryList.addEventListener("click", (event) => {
   event.preventDefault();
   if (event.target.nodeName !== "IMG") {
     return;
   }
-  // console.log(event.target);
-  instance.element().innerHTML = `<img src = "${event.target.getAttribute("data-source")}" width ="1112" height = "640" />`;
-  console.log(event.currentTarget.getAttribute("data-source"));
+  const bigImage = event.target.getAttribute("data-source");
+  const instance = basicLightbox.create(
+  `<img src = "${bigImage}" width ="1112" height = "640" />
+`)
   instance.show();
-  
 })
+
 
 
 
